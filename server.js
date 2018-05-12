@@ -3,7 +3,6 @@ const express = require('express');
 
 const bodyParser = require('body-parser');
 
-
 const app = express();
 
 
@@ -11,15 +10,7 @@ var PORT = process.env.PORT || 3000;
 
 const friendsList = require('./app/data/friends');
 
-// console.log(friendsList);
-
-
 require("./routing/apiRoutes")(app);
 require("./routing/htmlRoutes")(app);
-
-// app.get('/', (req, res) => res.send('Hello World!'))
-
-// Basic route that sends the user first to the AJAX Page
-
 
 app.listen(PORT, () => console.log(`Listening on http://localhost:${ PORT }/`));
