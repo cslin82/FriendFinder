@@ -1,56 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friend Finder Survey</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
-
+        <h2>Answer questions</h2>
 
         <form>
-            <ul>
-                <li>About you</li>
-                <ul>
-                    <li>Name</li>
-                    <li>Photo url</li>
-                </ul>
-                <li>Q1</li>
-                <li>Q2</li>
-                <li>Q3</li>
-                <li>Q4</li>
-                <li>Q5</li>
-                <li>Q6</li>
-                <li>Q7</li>
-                <li>Q8</li>
-                <li>Q9</li>
-                <li>Q10</li>
-            </ul>
-            Submit
-
-
-
-
-
-
-
+        
+            <div class="form-group">
+                <label for="input-name">Your name</label>
+                <input type="text" class="form-control" id="input-name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="input-photo">URL to your photo</label>
+                <input type="text" class="form-control" id="input-photo" placeholder="URL to your photo">
+            </div>
+            
+            <div class="form-group">
+                <label for="input-photo">Question 1</label>
+                <input type="text" class="form-control" id="q1">
+            </div>
+            <div class="form-group">
+                <label for="input-photo">Question 2</label>
+                <input type="text" class="form-control" id="q2">
+            </div>
+            <div class="form-group">
+                <label for="input-photo">Question 3</label>
+                <input type="text" class="form-control" id="q3">
+            </div>
+            <div class="form-group">
+                <label for="input-photo">Question 4</label>
+                <input type="text" class="form-control" id="q4">
+            </div>
+            <div class="form-group">
+                <label for="input-photo">Question 5</label>
+                <input type="text" class="form-control" id="q5">
+            </div>
+  
+    
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
+        
         </form>
 
 
-
+    <button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+    </button>
 
 
 
 
     </div>
-    
+    <!-- end div.container -->
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">It's a match!</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="match-name">Match Name</p>
+                    <p id="match-photo">Match photo</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-block btn-primary" data-dismiss="modal">Close</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <script>
+    
+        $(document).ready(function () {
+            console.log("ready!");
+            $('#submit').click(function(event){
+                event.preventDefault();
+
+                surveyAnswers = {
+                    name: $('#input-name').val().trim(),
+                    photo: $('#input-photo').val().trim()
+                }
+                var scores = [];
+                for (let i = 1; i <= 5; i++) {
+                    scores.push($('#q'+i).val().trim())
+                    
+                }
+                surveyAnswers.scores = scores;
+
+                console.log(surveyAnswers);
+                
+
+
+            });
+        });
+    </script> <!-- end inline script -->
+
 </body>
 </html>
