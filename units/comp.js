@@ -20,9 +20,9 @@ function compatScore(scoresA, scoresB) {
     return score;
 }
 
-var myFriend;
+// var myFriend;
 
-myFriend = friendsList[0].scores;
+// myFriend = friendsList[0].scores;
 
 var myScores = new Array(10);
 
@@ -31,9 +31,9 @@ for (let i = 0; i < myScores.length; i++) {
 
 }
 console.log('myScores', myScores);
-console.log('myFriend', myFriend);
+// console.log('myFriend', myFriend);
 
-console.log('compat', compatScore(myScores, myFriend));
+// console.log('compat', compatScore(myScores, myFriend));
 
 var compats = [];
 
@@ -43,11 +43,12 @@ for (let j = 0; j < friendsList.length; j++) {
     friendsList[j].compat = compatScore(myScores, element.scores);
 }
 
-console.log(compats);
+console.log('compats', compats);
+console.log('compats', compats.sort());
 
 console.log(Math.min(...compats));
 
-console.log(friendsList[3]);
+console.log(friendsList.find(friend => friend.compat === Math.min(...compats)));
 
 
 
