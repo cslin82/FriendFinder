@@ -14,23 +14,22 @@
 <body>
     <div class="container">
         <h2>Answer questions</h2>
+        <h3 id="warntext">All fields required</h3>
 
         <form>
-        
             <div class="form-group">
-                <label for="input-name">Your name</label>
+                <label for="input-name"><h4>Your name</h4></label>
                 <input type="text" class="form-control" id="input-name" placeholder="Name">
             </div>
             <div class="form-group">
-                <label for="input-photo">URL to your photo</label>
+                <label for="input-photo"><h4>URL to your photo</h4></label>
                 <input type="text" class="form-control" id="input-photo" placeholder="URL to your photo">
             </div>
-            
 
-            
             <div class="form-group">
                 <label for="q1">New York City Borough</label>
                 <select id="q1" name="q1" class="form-control">
+                    <option disabled selected hidden value>(select an option)</option>
                     <option value="1">Manhattan</option>
                     <option value="2">Brooklyn</option>
                     <option value="3">Bronx</option>
@@ -42,6 +41,7 @@
             <div class="form-group">
                 <label for="q2">Location outside of New York</label>
                 <select id="q2" name="q2" class="form-control">
+                    <option disabled selected hidden value>(select an option)</option>
                     <option value="1">Los Angeles</option>
                     <option value="2">Chicago</option>
                     <option value="3">Minnesota</option>
@@ -53,6 +53,7 @@
             <div class="form-group">
                 <label for="q3">Bar to drink</label>
                 <select id="q3" name="q3" class="form-control">
+                    <option disabled selected hidden value>(select an option)</option>
                     <option value="1">MacLaren's</option>
                     <option value="2">Hoser Hut</option>
                     <option value="3">Giddy Ups</option>
@@ -64,6 +65,7 @@
             <div class="form-group">
                 <label for="q4">Celebrity Cameo</label>
                 <select id="q4" name="q4" class="form-control">
+                    <option disabled selected hidden value>(select an option)</option>
                     <option value="1">Regis Philbin</option>
                     <option value="2">Tim Gunn</option>
                     <option value="3">Heidi Klum</option>
@@ -75,6 +77,7 @@
             <div class="form-group">
                 <label for="q5">Play from Barney's Playbook</label>
                 <select id="q5" name="q5" class="form-control">
+                        <option disabled selected hidden value>(select an option)</option>
                     <option value="1">The SNASA</option>
                     <option value="2">The Cheap Trick</option>
                     <option value="3">The He's Not Coming</option>
@@ -86,6 +89,7 @@
             <div class="form-group">
                 <label for="q6">Running gag</label>
                 <select id="q6" name="q6" class="form-control">
+                    <option disabled selected hidden value>(select an option)</option>
                     <option value="1">The Slaps</option>
                     <option value="2">The Doppelgangers</option>
                     <option value="3">Robin Sparkles</option>
@@ -97,6 +101,7 @@
             <div class="form-group">
                 <label for="q7">An item</label>
                 <select id="q7" name="q7" class="form-control">
+                    <option disabled selected hidden value>(select an option)</option>
                     <option value="1">Yellow umbrella</option>
                     <option value="2">Ducky Tie</option>
                     <option value="3">Red Cowboy Boots</option>
@@ -108,6 +113,7 @@
             <div class="form-group">
                 <label for="q8">Barneyisms</label>
                 <select id="q8" name="q8" class="form-control">
+                    <option disabled selected hidden value>(select an option)</option>
                     <option value="1">Legen... wait for it...</option>
                     <option value="2">Suit up!</option>
                     <option value="3">The Bro Code</option>
@@ -119,6 +125,7 @@
             <div class="form-group">
                 <label for="q9">Song</label>
                 <select id="q9" name="q9" class="form-control">
+                    <option disabled selected hidden value>(select an option)</option>
                     <option value="1">I'm Gonna Be (500 Miles)</option>
                     <option value="2">Murder Train</option>
                     <option value="3">Let's Go to the Mall</option>
@@ -130,6 +137,7 @@
             <div class="form-group">
                 <label for="q10">Guest star</label>
                 <select id="q10" name="q10" class="form-control">
+                    <option disabled selected hidden value>(select an option)</option>
                     <option value="1">Kal Penn</option>
                     <option value="2">Wayne Brady</option>
                     <option value="3">Mandy Moore</option>
@@ -148,7 +156,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -177,20 +185,43 @@
             console.log("ready!");
             $('#submit').click(function(event){
                 event.preventDefault();
+                $('.form-group').removeClass('has-error bg-danger');
+                $('#warntext').removeClass('text-danger');
+
+
+                let validInput = true;
 
                 surveyAnswers = {
                     name: $('#input-name').val().trim(),
                     photo: $('#input-photo').val().trim()
                 }
+
+                if (surveyAnswers.name === '') {
+                    validInput = false;
+                    $('#input-name').parent().addClass('has-error bg-danger');
+                }
+
+                if (surveyAnswers.photo === '') {
+                    validInput = false;
+                    $('#input-photo').parent().addClass('has-error bg-danger');
+                }
+
                 var scores = [];
                 for (let i = 1; i <= 10; i++) {
-                    scores.push($('#q'+i).val());
+                    let currentScore = $('#q'+i).val();
+                    if (!currentScore) {
+                        $('#q'+i).parent().addClass('has-error bg-danger');
+                        validInput = false;
+                    }
+                    scores.push(currentScore);
                     
                 }
                 surveyAnswers.scores = scores;
                 // surveyAnswers.scores = 	[ 1, 2, 2, 5, 3, 4, 5, 1, 3, 5 ];
 
                 console.log(surveyAnswers);
+                if (validInput) {
+                    
 
                 // ajax post, then response callback is to set the match and then toggle modal
                 $.post("/api/friends", surveyAnswers, function (data) {
@@ -199,6 +230,9 @@
                     $('#match-photo').empty().append( $("<img>").attr("src", data.photo)  );
                     $('#myModal').modal('toggle');
                 });
+                } else {
+                    $('#warntext').addClass('text-danger');
+                }
             });
         });
     </script> <!-- end inline script -->
