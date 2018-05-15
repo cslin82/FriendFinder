@@ -23,18 +23,10 @@ module.exports = function (app) {
     
     app.post("/api/friends", function (req, res) {
 
-        console.log(req);
-        console.log(friendsList);
-        
-
+        // console.log(friendsList);
         console.log(req.body.scores);
 
         var myScores = req.body.scores.map(num => parseInt(num, 10));
-
-        console.log(typeof myScores);
-        console.log(typeof myScores[5]);
-        
-        // res.json(req.body)
 
         function compatScore(scoresA, scoresB) {
             var score = 0;
@@ -52,10 +44,8 @@ module.exports = function (app) {
             friendsList[j].compat = compatScore(myScores, element.scores);
         }
 
-        // console.log('compats', compats);
-        // console.log('compats', compats.sort());
-
-        // console.log(Math.min(...compats));
+        console.log('compats', compats);
+        console.log('compats sorted', compats.sort());
 
         res.json(friendsList.find(friend => friend.compat === Math.min(...compats)));
 

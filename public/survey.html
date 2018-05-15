@@ -26,27 +26,117 @@
                 <input type="text" class="form-control" id="input-photo" placeholder="URL to your photo">
             </div>
             
+
+            
             <div class="form-group">
-                <label for="input-photo">Question 1</label>
-                <input type="text" class="form-control" id="q1">
+                <label for="q1">Question 1</label>
+                <select id="q1" name="q1" class="form-control">
+                    <option value="1">Q1A1</option>
+                    <option value="2">Q1A2</option>
+                    <option value="3">Q1A3</option>
+                    <option value="4">Q1A4</option>
+                    <option value="5">Q1A5</option>
+                </select>
             </div>
+    
             <div class="form-group">
-                <label for="input-photo">Question 2</label>
-                <input type="text" class="form-control" id="q2">
+                <label for="q2">Question 2</label>
+                <select id="q2" name="q2" class="form-control">
+                    <option value="1">Q2A1</option>
+                    <option value="2">Q2A2</option>
+                    <option value="3">Q2A3</option>
+                    <option value="4">Q2A4</option>
+                    <option value="5">Q2A5</option>
+                </select>
             </div>
+    
             <div class="form-group">
-                <label for="input-photo">Question 3</label>
-                <input type="text" class="form-control" id="q3">
+                <label for="q3">Question 3</label>
+                <select id="q3" name="q3" class="form-control">
+                    <option value="1">Q3A1</option>
+                    <option value="2">Q3A2</option>
+                    <option value="3">Q3A3</option>
+                    <option value="4">Q3A4</option>
+                    <option value="5">Q3A5</option>
+                </select>
             </div>
+    
             <div class="form-group">
-                <label for="input-photo">Question 4</label>
-                <input type="text" class="form-control" id="q4">
+                <label for="q4">Question 4</label>
+                <select id="q4" name="q4" class="form-control">
+                    <option value="1">Q4A1</option>
+                    <option value="2">Q4A2</option>
+                    <option value="3">Q4A3</option>
+                    <option value="4">Q4A4</option>
+                    <option value="5">Q4A5</option>
+                </select>
             </div>
+    
             <div class="form-group">
-                <label for="input-photo">Question 5</label>
-                <input type="text" class="form-control" id="q5">
+                <label for="q5">Question 5</label>
+                <select id="q5" name="q5" class="form-control">
+                    <option value="1">Q5A1</option>
+                    <option value="2">Q5A2</option>
+                    <option value="3">Q5A3</option>
+                    <option value="4">Q5A4</option>
+                    <option value="5">Q5A5</option>
+                </select>
             </div>
-  
+    
+            <div class="form-group">
+                <label for="q6">Question 6</label>
+                <select id="q6" name="q6" class="form-control">
+                    <option value="1">Q6A1</option>
+                    <option value="2">Q6A2</option>
+                    <option value="3">Q6A3</option>
+                    <option value="4">Q6A4</option>
+                    <option value="5">Q6A5</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="q7">Question 7</label>
+                <select id="q7" name="q7" class="form-control">
+                    <option value="1">Q7A1</option>
+                    <option value="2">Q7A2</option>
+                    <option value="3">Q7A3</option>
+                    <option value="4">Q7A4</option>
+                    <option value="4">Q7A5</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="q8">Question 8</label>
+                <select id="q8" name="q8" class="form-control">
+                    <option value="1">Q8A1</option>
+                    <option value="2">Q8A2</option>
+                    <option value="3">Q8A3</option>
+                    <option value="4">Q8A4</option>
+                    <option value="5">Q8A5</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="q9">Question 9</label>
+                <select id="q9" name="q9" class="form-control">
+                    <option value="1">Q9A1</option>
+                    <option value="2">Q9A2</option>
+                    <option value="3">Q9A3</option>
+                    <option value="4">Q9A4</option>
+                    <option value="5">Q9A5</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="q10">Question 10</label>
+                <select id="q10" name="q10" class="form-control">
+                    <option value="1">Q10A1</option>
+                    <option value="2">Q10A2</option>
+                    <option value="3">Q10A3</option>
+                    <option value="4">Q10A4</option>
+                    <option value="5">Q10A5</option>
+                </select>
+            </div>
     
             <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
         
@@ -93,11 +183,12 @@
                     photo: $('#input-photo').val().trim()
                 }
                 var scores = [];
-                for (let i = 1; i <= 5; i++) {
-                    scores.push($('#q'+i).val().trim())
+                for (let i = 1; i <= 10; i++) {
+                    scores.push($('#q'+i).val());
                     
                 }
                 surveyAnswers.scores = scores;
+                // surveyAnswers.scores = 	[ 1, 2, 2, 5, 3, 4, 5, 1, 3, 5 ];
 
                 console.log(surveyAnswers);
 
