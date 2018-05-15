@@ -14,12 +14,6 @@ module.exports = function (app) {
         res.json(friendsList);
     });
     
-    // temporary random return
-    app.get("/api/random", function (req, res) {
-        let rando = Math.floor(Math.random() * (friendsList.length));
-        res.json(friendsList[rando]);
-    });
-    
     app.post("/api/friends", function (req, res) {
 
         // console.log(req.body.scores);
