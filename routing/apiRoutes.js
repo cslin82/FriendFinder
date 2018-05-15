@@ -18,13 +18,11 @@ module.exports = function (app) {
     app.get("/api/random", function (req, res) {
         let rando = Math.floor(Math.random() * (friendsList.length));
         res.json(friendsList[rando]);
-
     });
     
     app.post("/api/friends", function (req, res) {
 
-        // console.log(friendsList);
-        console.log(req.body.scores);
+        // console.log(req.body.scores);
 
         var myScores = req.body.scores.map(num => parseInt(num, 10));
 
@@ -44,9 +42,10 @@ module.exports = function (app) {
             friendsList[j].compat = compatScore(myScores, element.scores);
         }
 
-        console.log('compats', compats);
-        console.log('compats sorted', compats.sort());
+        // console.log('compats', compats);
+        // console.log('compats sorted', compats.sort());
 
+        // does not properly account for multiple equal matches
         res.json(friendsList.find(friend => friend.compat === Math.min(...compats)));
 
     });
