@@ -17,9 +17,12 @@ This first full-stack express app matches people to their most compatible friend
 
 ## Reused things
 
-* Front-end technolgies (HTML, CSS, jQuery), HTML forms
+* Front-end technologies (HTML, CSS, jQuery), HTML forms
 * Front-end frameworks (Bootstrap)
 
 ## Enhancements
 
-* 
+* Change compatibility formula to give greater weight to matching exactly
+* Add bios
+* Write new users to database, allow uploading of photos
+* Show multiple matches; reveal compatibility scores
